@@ -1,7 +1,7 @@
 <x-app-layout>
 <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        {{ __('Add Item') }}
+        {{ __('Add Item to Shopping List') }}
     </h2>
 </x-slot>
 
@@ -12,7 +12,7 @@
             <form id="add_item_form" action="/item">
 
                 <div class="form-group">
-                    <textarea name="item_name" id="item_name" class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"  placeholder='Enter your item'></textarea>  
+                    <textarea id="add_item_name" class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"  placeholder='Enter your item'></textarea>  
                     @if ($errors->has('item_name'))
                         <span class="text-danger">{{ $errors->first('item_name') }}</span>
                     @endif

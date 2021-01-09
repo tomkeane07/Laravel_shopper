@@ -23,7 +23,7 @@
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
-        <script src="{{ asset('js/add.js') }}"></script>
+        <script src="{{ asset('js/item_ajax_handler.js') }}"></script>
 
         <div class="min-h-screen bg-gray-100">
             @livewire('navigation-menu')

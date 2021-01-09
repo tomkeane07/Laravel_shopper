@@ -2,4 +2,4 @@ require('./bootstrap');
 
 require('alpinejs');
 
-require('../../public/js/add');
+require('../../public/js/item_ajax_handler')

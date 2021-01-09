@@ -3785,15 +3785,15 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./public/js/add.js":
-/*!**************************!*\
-  !*** ./public/js/add.js ***!
-  \**************************/
+/***/ "./public/js/item_ajax_handler.js":
+/*!****************************************!*\
+  !*** ./public/js/item_ajax_handler.js ***!
+  \****************************************/
 /***/ (() => {
 
 $(document).ready(function () {
+  //ADD
   $('#ajaxSubmit_add').click(function (e) {
-    console.log("posting");
     $.ajaxSetup({
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -3804,18 +3804,41 @@ $(document).ready(function () {
       url: $('#add_item_form').attr('action'),
       method: 'POST',
       data: {
-        'item_name': $('#item_name').val()
+        'item_name': $('#add_item_name').val()
       },
-      dataType: 'json',
-      encode: true,
       success: function success(result) {
         console.log("ajax success");
         console.log(result);
+        window.location.href = "/dashboard";
       },
       error: function error(result, request) {
         console.log("ajax failure");
         console.log(result);
-        console.log($('#item_name').val());
+      }
+    });
+  }); //EDIT
+
+  $('#ajaxSubmit_edit').click(function (e) {
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+    e.preventDefault();
+    $.ajax({
+      url: $('#edit_item_form').attr('action'),
+      method: 'POST',
+      data: {
+        'item_name': $('#edit_item_name').val()
+      },
+      success: function success(result) {
+        console.log("ajax success");
+        console.log(result);
+        window.location.href = "/dashboard";
+      },
+      error: function error(result, request) {
+        console.log("ajax failure");
+        console.log(result);
       }
     });
   });
@@ -3833,7 +3856,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
 
-__webpack_require__(/*! ../../public/js/add */ "./public/js/add.js");
+__webpack_require__(/*! ../../public/js/item_ajax_handler */ "./public/js/item_ajax_handler.js");
 
 /***/ }),
 
