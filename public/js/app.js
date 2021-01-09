@@ -3785,6 +3785,44 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./public/js/add.js":
+/*!**************************!*\
+  !*** ./public/js/add.js ***!
+  \**************************/
+/***/ (() => {
+
+$(document).ready(function () {
+  $('#ajaxSubmit_add').click(function (e) {
+    console.log("posting");
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+    e.preventDefault();
+    $.ajax({
+      url: $('#add_item_form').attr('action'),
+      method: 'POST',
+      data: {
+        'item_name': $('#item_name').val()
+      },
+      dataType: 'json',
+      encode: true,
+      success: function success(result) {
+        console.log("ajax success");
+        console.log(result);
+      },
+      error: function error(result, request) {
+        console.log("ajax failure");
+        console.log(result);
+        console.log($('#item_name').val());
+      }
+    });
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -3794,6 +3832,8 @@ module.exports = {
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! alpinejs */ "./node_modules/alpinejs/dist/alpine.js");
+
+__webpack_require__(/*! ../../public/js/add */ "./public/js/add.js");
 
 /***/ }),
 
